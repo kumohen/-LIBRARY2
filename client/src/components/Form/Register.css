@@ -1,0 +1,64 @@
+.register-container {
+  background-image: url("../../Images/Libary.jpg");
+}
+.container {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 10rem;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 10px 10px 20px rgba(222, 222, 230, 0.4),
+    -10px -10px 20px rgba(222, 222, 230, 0.8),
+    -8px 8px 30px rgba(222, 222, 230, 1);
+}
+.container h1 {
+  font-size: 2rem;
+  color: #293241;
+  margin-bottom: 2rem;
+}
+.container label,
+.container input {
+  color: #293241;
+}
+.container label {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.container input {
+  border: 2px solid rgba(29, 53, 87, 0.8);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+.container .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+.container button {
+  color: #fff;
+  width: 100%;
+  font-size: 1.2rem;
+  background: #1d3557;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  margin-top: 0.8rem;
+}
+.container button:hover {
+  background: rgba(29, 53, 87, 0.8);
+}
+.container .input-error {
+  border-color: #e63946;
+}
+.container .error {
+  color: #e63946;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+}
+.container .disabled-btn {
+  cursor: not-allowed;
+  background: rgba(29, 53, 87, 0.8);
+}
