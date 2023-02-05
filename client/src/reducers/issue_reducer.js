@@ -29,6 +29,21 @@ export const getAllIssueBookReqReducer = (state={issuebooks:[]},action)=>{
             return state         
     }
 }
+export const getAllReturnBookReqReducer = (state={returnbooks:[]},action)=>{
+    switch(action.type){
+        case 'GET_All_RETURN_REQUEST':
+            return {...state,loading:true}
+        case 'GET_All_RETURN_SUCCESS':
+            return {
+                returnbooks:action.payload,loading:false
+            }    
+        case 'GET_All_RETURN_FAILED':
+            return {error:action.payload,loading:false}
+        default:
+            return state         
+    }
+}
+
 export const userIssuedBookReducer = (state={userIssuedBook:[]},action)=>{
     switch(action.type){
         case 'USER_ISSUED_BOOK':

@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {getUserIssuedBook ,singleissueABook ,issueABookReturn} from "../actions/Issue_action"
+import {getUserIssuedBook ,singleissueABook ,issueABookReturn,returnReqAction} from "../actions/Issue_action"
 import { useDispatch, useSelector } from 'react-redux'
 import {Modal,Button} from "react-bootstrap"
 import Moment from 'react-moment';
@@ -48,6 +48,13 @@ var days = duration.asDays();
 dayDiff = days
       
   }
+
+
+  const hanndleReqandReturn = (book)=>{
+      dispatch(issueABookReturn(book.bookId))
+
+       dispatch(returnReqAction(book))
+  }
   
  
  
@@ -87,7 +94,7 @@ dayDiff = days
         <td style={{textAlign:"center"}}>
             {/* <i className='fa fa-trash m-1' onClick={()=> console.log("okk")}></i> */}
              {/* <button onClick={() => console.log("")} className="btn btn-success">Renew</button> */}
-             <button onClick={() => dispatch(issueABookReturn(book.bookId))} className="btn btn-danger mr" style={{marginRight:"5px"}}>Return </button>
+             <button onClick={() => hanndleReqandReturn(book)} className="btn btn-danger mr" style={{marginRight:"5px"}}>Return </button>
              <button onClick={() => handleModal(book.bookId,book.createdAt)} className="btn btn-success">Details</button>
         </td>
 

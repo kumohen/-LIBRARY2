@@ -3,6 +3,8 @@ const router = express.Router();
 const requireLogin = require("../middleware/auth")
 const Issue = require("../models/issue");
 const Book = require("../models/book");
+const ReturnBook= require("../models/Return")
+
 
 
 
@@ -11,33 +13,45 @@ const Book = require("../models/book");
 router.post("/issueRequest", async (req, res) => {
    
 
+
    const { title,author,publisher,year,userId,bookId,userBranch,userName,isRecom,copies } = req.body ;
    
+   if(req.body.bookId != undefined){
+    const Modbook = await Book.findOne({_id : bookId})
+    Modbook.copies -= 1 ;
+    await Modbook.save();
+   }
    
    
-   
-   const Modbook = await Book.findOne({_id : bookId})
-   Modbook.copies -= 1 ;
-   await Modbook.save();
+ 
 
     const book = await new Issue({
         title,author,publisher,year,userId,bookId,userBranch,userName,isRecom,copies
     })
     await book.save();
-    // console.log("book",book)
-    // book.save().then(result => {
-    //     res.status(201).json({
-    //         message: "Done upload!",
-            
-    //     })
-    // }).catch(err => {
-    //     console.log(err),
-    //         res.status(500).json({
-    //             error: err
-    //         });
-    // })
+
  
 })
+
+router.post("/returnReq",async(req,res)=>{
+      const {title,author,publisher,userName,userBranch,userId,bookId} = req.body 
+
+      const returnBook = await new ReturnBook({title,author,publisher,userName,userBranch,userId,bookId});
+      await returnBook.save()
+
+})
+
+router.get("/allreturnedBook" ,(req,res)=>{
+    
+    ReturnBook.find()
+    .then((admins) => {
+      res.json(admins);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+})
+
 
 router.get("/issuedBook", requireLogin ,(req,res)=>{
     Issue.find({ userId: req.user._id })

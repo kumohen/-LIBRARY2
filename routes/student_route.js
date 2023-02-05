@@ -92,6 +92,7 @@ router.get("/profile", requireLogin, (req, res) => {
     });
 
 router.get("/allStudent", (req, res) => {
+    console.log("okk")
     Student.find().sort({ createdAt: -1 }).then(data => {
         res.status(200).json(
            data

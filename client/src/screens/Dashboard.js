@@ -13,6 +13,7 @@ import Messages from "./Messages"
 import AllIssuedBook from "./AllissuedBook"
 import Navbar from "../components/Navbar"
 import IssueReturn from "./Issue_Return";
+import ReturnBook from "./ReturnBook"
 import Addemployee from "./Add_Employee"
 
 const Dashboard = () => {
@@ -39,6 +40,7 @@ const Dashboard = () => {
                 <Route path="/dashboard/stuReqIssue" exact component={IssueRequest} />
                 <Route path="/dashboard/messages" exact component={Messages} />
                 <Route path="/dashboard/issue_return" exact component={IssueReturn} />
+                <Route path="/dashboard/returnBook" exact component={ReturnBook} />
                 <Route path="/dashboard/addEmployee" exact component={Addemployee} />
             </Switch>  
                   </div>

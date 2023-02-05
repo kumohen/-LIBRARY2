@@ -129,6 +129,24 @@ export const getAllBookIssueReq = ()=> async dispatch =>{
     }
 }
 
+export const getAllBookReturnReq = ()=> async dispatch =>{
+    dispatch({
+        type:'GET_All_RETURN_REQUEST'
+    })
+    try {
+        const response = await axios.get('/api/issues/allreturnedBook');
+        dispatch({
+           type:'GET_All_RETURN_SUCCESS',
+           payload:response.data
+       })
+    } catch (error) {
+       dispatch({
+           type:'GET_All_RETURN_FAILED',
+           payload:error
+       })
+    }
+}
+
 export const issuedReq = (bookId,postId)=> async dispatch =>{
    
     try {
@@ -144,6 +162,24 @@ export const issuedReq = (bookId,postId)=> async dispatch =>{
       }
   
 }
+
+
+export const returnReqAction = (obj)=> async dispatch =>{
+   
+    try {
+         await axios.post('/api/issues/returnReq' , obj)
+       
+       
+        dispatch({
+           type:'GET_RETURN_SUCCESS',
+           
+       })
+      } catch (error) {
+        console.log(error);
+      }
+  
+}
+
 
 export const issuedReqDeletedByAdmin = (postId)=> async dispatch =>{
      
