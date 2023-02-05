@@ -117,6 +117,7 @@ dayDiff = days
           
             <p> <b>Return Date :</b> {date &&  <Moment format="YYYY-MM-DD">{dateFrom}</Moment>}</p>
           
+          
             <p>  {Math.floor(dayDiff) > 0 ?Math.floor(dayDiff) : null }  </p>
             <h3> Fine : {Math.floor(dayDiff) > 0 ?Math.floor(dayDiff) * 15 : 0 } </h3>
             {/* <p> {dateFrom && dateFrom}</p> */}
